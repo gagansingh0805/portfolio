@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gagan Singh's Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #1f1f1f, #333);
+            color: #fff;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+        }
+        header h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        header nav {
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #64ffda;
+        }
+        .section {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #1f1f1f;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+            transform: scale(0.9);
+            animation: cardPopUp 1s ease-in-out;
+            animation-fill-mode: forwards;
+        }
+        .section:hover {
+            transform: scale(1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9);
+            transition: all 0.3s ease;
+        }
+        .skills-graph {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .skill-bar {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .skill-label {
+            font-weight: 600;
+        }
+        .skill-progress {
+            height: 20px;
+            border-radius: 10px;
+            background: #333;
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-progress span {
+            display: block;
+            height: 100%;
+            background: #64ffda;
+            position: absolute;
+            animation: growSkill 1s ease;
+        }
+        .gif-container {
+            text-align: center;
+            margin: 20px 0;
+            animation: slideIn 1s ease-out;
+        }
+        .gif-container img {
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .tab-card {
+            padding: 15px;
+            background: #64ffda;
+            color: black;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .tab-card:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.9);
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #1f1f1f;
+            color: #64ffda;
+            margin-top: 20px;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.8);
+        }
+        footer p {
+            margin: 0;
+        }
+        .button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            border-radius: 5px;
+            background: #64ffda;
+            color: #121212;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .button-link:hover {
+            background-color: #52e0c7;
+            transform: translateY(-3px);
+        }
+        .about-me {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: slideIn 1s ease-out;
+        }
+        .about-me h2 {
+            font-size: 2.5em;
+        }
+        .about-me p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .about-me img {
+            margin-top: 20px;
+        }
+        @keyframes cardPopUp {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            header nav {
+                margin-top: 10px;
+            }
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PortFolio</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="about" class="about-me">
+        <h2>Gagan Singh</h2>
+        <p>Age: 19 | BTech in CSE with AIML</p>
+        <p>Passionate about coding and innovation, aiming to solve real-world problems through technology.</p>
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt="Coding gif" width="300">
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+        <div class="skills-graph">
+            <div class="skill-bar">
+                <div class="skill-label">Web Development</div>
+                <div class="skill-progress" style="--skill-level: 70%;">
+                    <span style="width: 50%;"></span>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-label">DSA (Data Structures & Algorithms)</div>
+                <div class="skill-progress" style="--skill-level: 90%;">
+                    <span style="width: 60%;"></span>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-label">AI/ML</div>
+                <div class="skill-progress" style="--skill-level: 85%;">
+                    <span style="width: 65%;"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="tabs">
+            <div class="tab-card" onclick="showTab('tab1')">AI-Powered Chatbot</div>
+            <div class="tab-card" onclick="showTab('tab2')">Portfolio Website</div>
+            <div class="tab-card" onclick="showTab('tab3')">Analytics Dashboard</div>
+        </div>
+        <div id="tab1" class="tab-content">
+            <p>The AI-Powered Chatbot is a machine learning-based project that helps users interact in natural language, providing answers based on user queries. Built with Python and trained using deep learning models.</p>
+        </div>
+        <div id="tab2" class="tab-content">
+            <p>This Portfolio Website is a showcase of my skills, projects, and achievements, built with HTML, CSS, and JavaScript. It features responsive design and interactive elements to provide an engaging user experience.</p>
+        </div>
+        <div id="tab3" class="tab-content">
+            <p>The Analytics Dashboard is a data-driven application that presents insights into various datasets. It features interactive visualizations using tools like D3.js and charts to display data trends effectively.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <p>If you'd like to collaborate or discuss any projects, feel free to reach out to me via email at: </p>
+        <div>
+            <a href="mailto:gagansingh@example.com" class="button-link">Email Me</a>
+            <a href="https://www.linkedin.com/in/gagansingh" class="button-link" target="_blank">LinkedIn</a>
+            <a href="https://github.com/gagansingh" class="button-link" target="_blank">GitHub</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Gagan Singh. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Scroll effect for About Me section to fade out and move the other sections in view
+        window.addEventListener('scroll', function() {
+            const aboutSection = document.getElementById('about');
+            const scrollPosition = window.scrollY;
+
+            if (scrollPosition > 0) {
+                aboutSection.style.opacity = 1 - scrollPosition / 500; // fade out as you scroll
+            }
+        });
+    </script>
+</body>
+</html>
+
