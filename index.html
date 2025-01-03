@@ -10,206 +10,220 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #121212;
-            color: #e0e0e0;
+            background-color: #1a1a2e;
+            color: #cfcfcf;
             overflow-x: hidden;
         }
+
+        /* NavBar */
         header {
-            background: linear-gradient(135deg, #1f1f1f, #333);
-            color: #fff;
-            padding: 20px 40px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            padding: 15px 30px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        header.hidden {
+            transform: translateY(-100%);
         }
         header h1 {
-            font-size: 2em;
+            font-size: 1.5em;
             margin: 0;
+            white-space: nowrap;
         }
         header nav {
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
         nav a {
             text-decoration: none;
-            color: #fff;
+            color: #bfbfbf;
             font-weight: 600;
+            font-size: 1em;
             transition: color 0.3s;
+            white-space: nowrap;
         }
         nav a:hover {
-            color: #64ffda;
+            color: #77c7e3;
         }
+
+        /* Sections */
         .section {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 30px;
-            background-color: #1f1f1f;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
-            transform: scale(0.9);
-            animation: cardPopUp 1s ease-in-out;
-            animation-fill-mode: forwards;
-        }
-        .section:hover {
-            transform: scale(1);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9);
-            transition: all 0.3s ease;
-        }
-        .skills-graph {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .skill-bar {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-        .skill-label {
-            font-weight: 600;
-        }
-        .skill-progress {
-            height: 20px;
-            border-radius: 10px;
-            background: #333;
-            position: relative;
-            overflow: hidden;
-        }
-        .skill-progress span {
-            display: block;
-            height: 100%;
-            background: #64ffda;
-            position: absolute;
-            animation: growSkill 1s ease;
-        }
-        .gif-container {
-            text-align: center;
-            margin: 20px 0;
-            animation: slideIn 1s ease-out;
-        }
-        .gif-container img {
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-        }
-        .tabs {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .tab-card {
-            padding: 15px;
-            background: #64ffda;
-            color: black;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .tab-card:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.9);
-        }
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s ease-in;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #1f1f1f;
-            color: #64ffda;
-            margin-top: 20px;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.8);
-        }
-        footer p {
-            margin: 0;
-        }
-        .button-link {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 10px 5px;
-            border-radius: 5px;
-            background: #64ffda;
-            color: #121212;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .button-link:hover {
-            background-color: #52e0c7;
-            transform: translateY(-3px);
-        }
-        .about-me {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            animation: slideIn 1s ease-out;
+            padding: 30px;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: opacity 1s ease, transform 1s ease;
         }
-        .about-me h2 {
-            font-size: 2.5em;
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        .about-me p {
-            font-size: 1.2em;
-            margin-top: 10px;
+
+        /* About Section */
+        #about {
+            background: #232946;
+            color: #fffffe;
         }
-        .about-me img {
+        #about h2 {
+            font-size: 4em;
+            margin: 0;
+            background: linear-gradient(90deg, #77c7e3, #98a9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #about p {
+            font-size: 1.5em;
             margin-top: 20px;
+            max-width: 800px;
+            line-height: 1.6em;
         }
-        @keyframes cardPopUp {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
+
+        /* Skills Section */
+        #skills {
+            background: #121629;
+            padding: 50px 30px;
         }
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        #skills h2 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #77c7e3, #98a9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        .skills-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 100%;
         }
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-            header nav {
-                margin-top: 10px;
-            }
-            .section {
-                padding: 20px;
-            }
+        .skill {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background: conic-gradient(#2d334a 0%, #2d334a 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s, background 1.5s ease-out;
+        }
+        .skill[data-value]:before {
+            content: attr(data-label);
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            background: #121629;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fffffe;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+        .skill[data-value].animate {
+            background: conic-gradient(
+                #77c7e3 calc(var(--value) * 1%),
+                #2d334a calc(var(--value) * 1%)
+            );
+        }
+
+        /* Projects Section */
+        #projects h2 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #77c7e3, #98a9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .projects-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .project-card {
+            background: #232946;
+            width: 350px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            transition: transform 0.4s, background 0.4s;
+            text-align: center;
+        }
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: #2d334a;
+        }
+        .project-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #77c7e3;
+        }
+        .project-card p {
+            font-size: 1.2em;
+            color: #cfcfcf;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #1a1a2e;
+        }
+        #contact h2 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #77c7e3, #98a9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .contact-buttons {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .contact-button {
+            padding: 25px 50px;
+            font-size: 1.5em;
+            color: #fffffe;
+            background: linear-gradient(90deg, #77c7e3, #98a9ff);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .contact-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #232946;
+            color: #77c7e3;
+            font-size: 1.2em;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>PortFolio</h1>
+        <h1>Portfolio</h1>
         <nav>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
@@ -218,64 +232,47 @@
         </nav>
     </header>
 
-    <section id="about" class="about-me">
+    <section id="about" class="section">
         <h2>Gagan Singh</h2>
-        <p>Age: 19 | BTech in CSE with AIML</p>
-        <p>Passionate about coding and innovation, aiming to solve real-world problems through technology.</p>
-        <div class="gif-container">
-            <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt="Coding gif" width="300">
-        </div>
+        <p>
+            Hi, I'm a 19-year-old coder pursuing BTech in CSE with AIML specialization.  
+            I have a passion for creating elegant solutions and building innovative projects.
+        </p>
     </section>
 
     <section id="skills" class="section">
         <h2>Skills</h2>
-        <div class="skills-graph">
-            <div class="skill-bar">
-                <div class="skill-label">Web Development</div>
-                <div class="skill-progress" style="--skill-level: 70%;">
-                    <span style="width: 50%;"></span>
-                </div>
-            </div>
-            <div class="skill-bar">
-                <div class="skill-label">DSA (Data Structures & Algorithms)</div>
-                <div class="skill-progress" style="--skill-level: 90%;">
-                    <span style="width: 60%;"></span>
-                </div>
-            </div>
-            <div class="skill-bar">
-                <div class="skill-label">AI/ML</div>
-                <div class="skill-progress" style="--skill-level: 85%;">
-                    <span style="width: 65%;"></span>
-                </div>
-            </div>
+        <div class="skills-container">
+            <div class="skill" data-value="90" data-label="Web Dev 90%" style="--value: 90;"></div>
+            <div class="skill" data-value="85" data-label="AI & ML 85%" style="--value: 85;"></div>
+            <div class="skill" data-value="75" data-label="Data Analysis 75%" style="--value: 75;"></div>
         </div>
     </section>
 
     <section id="projects" class="section">
         <h2>Projects</h2>
-        <div class="tabs">
-            <div class="tab-card" onclick="showTab('tab1')">AI-Powered Chatbot</div>
-            <div class="tab-card" onclick="showTab('tab2')">Portfolio Website</div>
-            <div class="tab-card" onclick="showTab('tab3')">Analytics Dashboard</div>
-        </div>
-        <div id="tab1" class="tab-content">
-            <p>The AI-Powered Chatbot is a machine learning-based project that helps users interact in natural language, providing answers based on user queries. Built with Python and trained using deep learning models.</p>
-        </div>
-        <div id="tab2" class="tab-content">
-            <p>This Portfolio Website is a showcase of my skills, projects, and achievements, built with HTML, CSS, and JavaScript. It features responsive design and interactive elements to provide an engaging user experience.</p>
-        </div>
-        <div id="tab3" class="tab-content">
-            <p>The Analytics Dashboard is a data-driven application that presents insights into various datasets. It features interactive visualizations using tools like D3.js and charts to display data trends effectively.</p>
+        <div class="projects-container">
+            <div class="project-card">
+                <h3>Task Manager</h3>
+                <p>Efficient task management web application.</p>
+            </div>
+            <div class="project-card">
+                <h3>House Price Predictor</h3>
+                <p>AI model for predicting house prices.</p>
+            </div>
+            <div class="project-card">
+                <h3>Sentiment Analysis</h3>
+                <p>Machine learning pipeline for sentiment analysis.</p>
+            </div>
         </div>
     </section>
 
     <section id="contact" class="section">
         <h2>Contact</h2>
-        <p>If you'd like to collaborate or discuss any projects, feel free to reach out to me via email at: </p>
-        <div>
-            <a href="mailto:gagansingh@example.com" class="button-link">Email Me</a>
-            <a href="https://www.linkedin.com/in/gagansingh" class="button-link" target="_blank">LinkedIn</a>
-            <a href="https://github.com/gagansingh" class="button-link" target="_blank">GitHub</a>
+        <div class="contact-buttons">
+            <button class="contact-button">Email Me</button>
+            <button class="contact-button">LinkedIn</button>
+            <button class="contact-button">GitHub</button>
         </div>
     </section>
 
@@ -284,22 +281,26 @@
     </footer>
 
     <script>
-        function showTab(tabId) {
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-        }
+        const sections = document.querySelectorAll('.section');
+        const skills = document.querySelectorAll('.skill');
 
-        // Scroll effect for About Me section to fade out and move the other sections in view
-        window.addEventListener('scroll', function() {
-            const aboutSection = document.getElementById('about');
-            const scrollPosition = window.scrollY;
+        window.addEventListener('scroll', () => {
+            // Section visibility
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= window.innerHeight - 100 && rect.bottom >= 100) {
+                    section.classList.add('visible');
+                }
+            });
 
-            if (scrollPosition > 0) {
-                aboutSection.style.opacity = 1 - scrollPosition / 500; // fade out as you scroll
-            }
+            // Animate skill graphs
+            skills.forEach(skill => {
+                const rect = skill.getBoundingClientRect();
+                if (rect.top <= window.innerHeight - 100 && rect.bottom >= 100) {
+                    skill.classList.add('animate');
+                }
+            });
         });
     </script>
 </body>
 </html>
-
